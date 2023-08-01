@@ -28,7 +28,7 @@ fi
 
 echo -e "\e[36m Building kernel for ${BOARD} board! \e[0m"
 
-KERNEL_VERSION=$(cd ${LOCALPATH}/kernel && make kernelversion)
+KERNEL_VERSION=$(cd ${LOCALPATH}/kernel && make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- kernelversion)
 echo $KERNEL_VERSION
 
 if version_gt "${KERNEL_VERSION}" "5.11"; then
@@ -44,7 +44,7 @@ fi
 cd ${LOCALPATH}/kernel
 [ ! -e .config ] && echo -e "\e[36m Using ${DEFCONFIG} \e[0m" && make ${DEFCONFIG}
 
-make -j8
+make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j8
 cd ${LOCALPATH}
 
 if [ "${ARCH}" == "arm" ]; then
