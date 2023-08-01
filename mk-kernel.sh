@@ -26,6 +26,7 @@ if [ $? -ne 0 ]; then
 	exit
 fi
 
+echo "debug point openhd"
 echo -e "\e[36m Building kernel for ${BOARD} board! \e[0m"
 
 KERNEL_VERSION=$(cd ${LOCALPATH}/kernel && make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- kernelversion)
