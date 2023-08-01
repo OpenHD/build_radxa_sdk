@@ -43,7 +43,7 @@ if version_gt "${KERNEL_VERSION}" "5.11"; then
 fi
 
 cd ${LOCALPATH}/kernel
-[ ! -e .config ] && echo -e "\e[36m Using ${DEFCONFIG} \e[0m" && make ${DEFCONFIG}
+[ ! -e .config ] && echo -e "\e[36m Using ${DEFCONFIG} \e[0m" && make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- ${DEFCONFIG}
 
 make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- -j8
 cd ${LOCALPATH}
